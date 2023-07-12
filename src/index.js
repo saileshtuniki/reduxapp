@@ -2,16 +2,24 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+// import reportWebVitals from './reportWebVitals';
+
+import myStore from './Reduxstore/store';
+import { Provider } from 'react-redux';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  
+  <Provider store={myStore}>
     <App />
-  </React.StrictMode>
-);
+  </Provider>
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+);
+// {mystore} is the Redux store you have created (or configured), 
+// and <App /> is the root component of your React application. 
+// By wrapping <App /> with the {Provider} component and passing the store as a "prop",
+// all components within <App /> can access the Redux store.
+
+// Multiple store--> If we want to impliment mul stores we have mention obj Ex:- store={{myStore, mysecondStore}}
+
+// reportWebVitals();
